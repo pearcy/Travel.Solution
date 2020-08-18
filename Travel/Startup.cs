@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Travel.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
 
 namespace Travel
 {
@@ -23,10 +25,14 @@ namespace Travel
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<TravelContext>(opt =>  
+                opt.UseMySql(Configuration.GetConnectionString("DefaultConnection"))); // new lines 29, 30
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -41,7 +47,7 @@ namespace Travel
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
             app.UseMvc();
         }
     }

@@ -18,11 +18,11 @@ Download .NET Core SDK from Microsoft Corp  (**[macOS](https://dotnet.microsoft.
 
 Enter the command `dotnet tool install -g dotnet-script` in Terminal 
 
-### 2. Clone this [repository](https://github.com/christinereina/Wonka.Solution) from GitHub
+### 2. Clone this [repository](https://github.com/pearcy/Travel.Solution.git) from GitHub
 ```
 cd desktop
 git clone 
-cd CretaceousPark.Solution
+cd Travel.Solution
 ```
 ### 3. Install the necessary dependencies to build the project, run the following commands in your Terminal:
 ```
